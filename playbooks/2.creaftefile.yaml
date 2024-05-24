@@ -1,0 +1,14 @@
+# File Module 
+
+
+---
+- hosts: all
+  tasks:
+  - name: Create a file 
+    file:
+    # location , owner , mode
+      path: /tmp/filemodule.txt
+      mode: 0777
+      owner: ansible
+      state: touch
+

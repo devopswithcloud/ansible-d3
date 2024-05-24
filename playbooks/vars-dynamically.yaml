@@ -1,0 +1,37 @@
+---
+- hosts: all
+  become: true
+  vars:
+  - env: dev
+  vars_files:
+    - "{{env}}_vars.yaml"
+  # vars:
+  #   courseName: Devops Program
+  #   batchNumber: 3
+  tasks:
+    - name: Install HTTP webserver 
+      yum: # module
+        name: httpd
+        state: present 
+    - name: Copy the HTML file 
+      template: 
+        src: index.html
+        dest: /var/www/html/index.html
+      notify: 
+      - Restart the Service 
+  handlers:
+    - name: Restart the Service 
+      service: 
+        name: httpd
+        state: restarted
+        enabled: true
+
+
+
+
+# ansible yum ==== -b --become
+# ansible serveric start, enable ]
+
+
+
+#handlers 

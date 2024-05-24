@@ -1,0 +1,19 @@
+---
+# 1.yaml
+- name: <Name of the play>
+  hosts: <On which hosts this playbook should execute> 
+  become: yes or no
+  tasks:
+  - name: <Name of the task>
+    <module-name>:
+     <module-parameters-1>: <value-1>
+- name: <name of the play>
+---
+
+
+
+# ansible -i inv b -m modulename all
+ansible-playbook -i inventory 1.yaml
+
+
+# ansible -m ping

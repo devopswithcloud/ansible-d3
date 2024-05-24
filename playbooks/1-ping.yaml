@@ -1,0 +1,10 @@
+---
+# 1.yaml
+- hosts: all 
+  tasks: 
+  - name: Ping Servers 
+    ping: 
+
+# ansible -i inv -m ping all 
+
+# ansible-playbook -i inv 1.yaml 

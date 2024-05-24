@@ -1,0 +1,35 @@
+# git tree unzip httpd
+---
+- hosts: all
+  become: true
+  tasks:
+  - name: Install git
+    yum: 
+      name: git 
+      state: present
+  - name: Install httpd server 
+    yum: 
+      name: httpd 
+      state: present 
+  - name: Install htree
+    yum: 
+      name: tree 
+      state: present 
+  - name: Install unzip  
+    yum: 
+      name: unzip 
+      state: present 
+
+
+---
+- hosts: all
+  become: true
+  tasks:
+  - name: Install multiple packages 
+    yum: name="{{item}}" state=present
+    with_items:
+    - git 
+    - httpd
+    - unzip 
+    - tree
+    - wget 
